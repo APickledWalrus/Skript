@@ -3,7 +3,7 @@ name: Java 8 CI (MC 1.13-1.16)
 on:
     push:
         branches:
-            - main
+            - 'master'
             - 'dev/**'
     pull_request:
 
@@ -26,10 +26,10 @@ jobs:
             - name: Build Skript
               run: ./gradlew nightlyRelease
             - name: Run test scripts
-              run: ./gradlew clean skriptTestJava8
+              run: ./gradlew skriptTestJava8
             - name: Upload Nightly Build
               uses: actions/upload-artifact@v3
               if: success()
               with:
                   name: skript-nightly
-                  path: build/libs/*
+                  path: build/libs/Skript-nightly.jar

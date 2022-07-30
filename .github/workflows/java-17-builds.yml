@@ -3,7 +3,7 @@ name: Java 17 CI (MC 1.17+)
 on:
     push:
         branches:
-            - main
+            - 'master'
             - 'dev/**'
     pull_request:
 
@@ -26,10 +26,10 @@ jobs:
             - name: Build Skript
               run: ./gradlew nightlyRelease
             - name: Run test scripts
-              run: ./gradlew clean skriptTestJava17
+              run: ./gradlew skriptTestJava17
             - name: Upload Nightly Build
               uses: actions/upload-artifact@v3
               if: success()
               with:
                   name: skript-nightly
-                  path: build/libs/*
+                  path: build/libs/Skript-nightly.jar
